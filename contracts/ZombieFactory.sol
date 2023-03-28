@@ -17,6 +17,10 @@ contract ZombieFactory {
     uint dnaDigits = 16;
     uint dnaModulus = 10 ** dnaDigits;
 
+    // Mappings
+    mapping (uint => address) public zombieToOwner;
+    mapping (address => uint) ownerZombieCount;
+
     struct Zombie {
         string name;
         uint dna;
@@ -29,8 +33,8 @@ contract ZombieFactory {
         // and fire it here
         zombies.push(Zombie(_name, _dna));
         uint id = zombies.length - 1;
+        ownerZombieCount[msg.sender]++;
         emit NewZombie(id, _name, _dna);
-
     }
 
     function _generateRandomDna(string memory _str) private view returns (uint) {
@@ -39,6 +43,7 @@ contract ZombieFactory {
     }
 
     function createRandomZombie(string memory _name) public {
+        require(ownerZombieCount[msg.sender] == 0);
         uint randDna = _generateRandomDna(_name);
         _createZombie(_name, randDna);
     }
