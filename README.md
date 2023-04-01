@@ -15,5 +15,6 @@ ____  _            _        _           _
 
 
 ```
-Soliditt
+Solidity
+JS
 ```
