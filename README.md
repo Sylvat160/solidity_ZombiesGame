@@ -10,3 +10,10 @@ ____  _            _        _           _
 
 
 <img src="https://github.com/Sylvat160/solidity_ZombiesGame/blob/main/zombies.jpg" alt="img" />
+
+
+
+
+```
+Soliditt
+```
